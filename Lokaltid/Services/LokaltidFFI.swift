@@ -1,12 +1,23 @@
 import Foundation
 
-// MARK: - Errors
+// This file re-exports the auto-generated UniFFI bindings from Generated/lokaltid.swift
+// and provides a fallback implementation when the Rust library is not available.
+
+#if canImport(lokaltidFFI)
+// When the Rust library is available, import and use the generated bindings
+// The lokaltid.swift file in Generated/ will automatically import lokaltidFFI
+// and provide the public API functions that match our needs.
+
+// Since the generated code is in the same module, we can directly use its types and functions.
+// No need to re-export anything here - just ensure Generated/lokaltid.swift is included in the build.
+
+#else
+
+// MARK: - Fallback implementation when Rust library is not available
 
 public enum LokaltidError: Error {
-    case invalidCoordinate
+    case InvalidCoordinate
 }
-
-// MARK: - Data Types
 
 public struct MobileSolarTime {
     public let timeString: String
@@ -27,32 +38,23 @@ public struct MobileSolarTime {
     }
 }
 
-// MARK: - FFI Bindings
-
-// Desse funksjonane må kallast inn til Rust-biblioteket
-// For no lagar me ei Swift-basert implementasjon som placeholder
-
-/// Calculate solar time for a specific location and timestamp
 public func calculateSolarTimeForLocation(
     latitude: Double,
     longitude: Double,
     unixTimestamp: Int64
 ) throws -> MobileSolarTime {
-    // Valider koordinatar
     guard latitude >= -90 && latitude <= 90 else {
-        throw LokaltidError.invalidCoordinate
+        throw LokaltidError.InvalidCoordinate
     }
     guard longitude >= -180 && longitude <= 180 else {
-        throw LokaltidError.invalidCoordinate
+        throw LokaltidError.InvalidCoordinate
     }
     
-    // Berekn offset basert på lengdegrad
-    // 15° = 1 time (3600 sekund), 1° = 4 minutt (240 sekund)
+    // Simple solar time calculation based on longitude
     let offsetSeconds = (longitude / 15.0) * 3600.0
     let offsetMinutes = offsetSeconds / 60.0
     let offsetHours = offsetSeconds / 3600.0
     
-    // Formater offset
     let totalSeconds = abs(Int(offsetSeconds))
     let hours = totalSeconds / 3600
     let minutes = (totalSeconds % 3600) / 60
@@ -60,7 +62,6 @@ public func calculateSolarTimeForLocation(
     let sign = offsetSeconds >= 0 ? "+" : "-"
     let offsetFormatted = String(format: "%@%02d:%02d:%02d", sign, hours, minutes, seconds)
     
-    // Berekn soltid
     let solarTimestamp = unixTimestamp + Int64(offsetSeconds)
     let date = Date(timeIntervalSince1970: TimeInterval(solarTimestamp))
     
@@ -78,7 +79,6 @@ public func calculateSolarTimeForLocation(
     )
 }
 
-/// Calculate solar time for current time
 public func calculateSolarTimeNow(
     latitude: Double,
     longitude: Double
@@ -90,3 +90,6 @@ public func calculateSolarTimeNow(
         unixTimestamp: now
     )
 }
+
+#endif
+
