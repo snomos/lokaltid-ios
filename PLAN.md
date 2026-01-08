@@ -74,7 +74,7 @@ Appen er fullstendig implementert og klar til testing/køyring!
 
 1. Opna prosjektet i Xcode:
    ```bash
-   open Lokaltid.xcodeproj
+   open Soltid.xcodeproj
    ```
 
 2. Vel ein simulator (t.d. iPhone 16)

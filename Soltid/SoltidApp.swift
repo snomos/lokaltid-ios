@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct LokaltidApp: App {
+struct SoltidApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

@@ -24,11 +24,11 @@ struct SolarTime {
 }
 
 /// Bereknar soltid basert på geografisk posisjon
-/// Bruker lokaltid Rust-biblioteket via FFI
+/// Bruker soltid Rust-biblioteket via FFI
 class SolarTimeCalculator {
     
     /// Bereknar soltid for gitt posisjon og tid
-    /// Bruker lokaltid-biblioteket for presis berekningar
+    /// Bruker soltid-biblioteket for presis berekningar
     static func calculate(for location: Location, at date: Date = Date()) -> SolarTime {
         do {
             // Kall Rust-biblioteket via FFI

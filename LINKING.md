@@ -7,7 +7,7 @@ This document explains how to link the Rust library (`lokaltid.xcframework`) int
 1. ✅ Built the Rust library for all iOS targets (device + simulator)
 2. ✅ Generated Swift bindings using UniFFI
 3. ✅ Created `lokaltid.xcframework` in `Frameworks/` directory
-4. ✅ Generated Swift bindings file: `Lokaltid/Generated/lokaltid.swift`
+4. ✅ Generated Swift bindings file: `Soltid/Generated/lokaltid.swift`
 
 ## What Needs to Be Done in Xcode
 
@@ -15,10 +15,10 @@ To complete the integration, you need to manually add the framework and generate
 
 ### Step 1: Add the Generated Swift File
 
-1. Open `Lokaltid.xcodeproj` in Xcode
+1. Open `Soltid.xcodeproj` in Xcode
 2. Right-click on the `Lokaltid` folder in the Project Navigator
-3. Select **Add Files to "Lokaltid"...**
-4. Navigate to `Lokaltid/Generated/`
+3. Select **Add Files to "Soltid"...**
+4. Navigate to `Soltid/Generated/`
 5. Select `lokaltid.swift`
 6. Make sure **"Copy items if needed"** is **UNCHECKED** (the file is already in the right place)
 7. Make sure **"Add to targets: Lokaltid"** is **CHECKED**
@@ -77,7 +77,7 @@ lokaltid-ios/
 │           └── Headers/
 │               ├── lokaltidFFI.h
 │               └── module.modulemap
-├── Lokaltid/
+├── Soltid/
 │   ├── Generated/
 │   │   └── lokaltid.swift             # Auto-generated Swift bindings
 │   └── Services/

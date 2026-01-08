@@ -1,6 +1,6 @@
-# Lokaltid - iOS App
+# Soltid - iOS App
 
-Ein iOS-app som viser både **soltid** (lokaltid) og **standardtid** samtidig på ei tradisjonell analog urskive.
+Ein iOS-app som viser både **soltid** og **standardtid** samtidig på ei tradisjonell analog urskive.
 
 ## 🌞 Kva er soltid?
 
@@ -13,7 +13,7 @@ Utrekninga er basert på lengdegrad:
 ## ⌚️ Funksjonar
 
 - **Analog urskive** med to sett visarar:
-  - **Kvite visarar**: Viser soltid (lokaltid)
+  - **Kvite visarar**: Viser soltid
   - **Gråe visarar**: Viser standardtid (systemtid)
 - **GPS-basert berekningar**: Appen bruker di noverande posisjon til å berekna soltid
 - **Realtidsoppdatering**: Begge klokkene oppdaterer seg kvar sekund
@@ -39,9 +39,9 @@ Appen treng berre **posisjonslgløyve** (GPS):
 
 ```
 lokaltid-ios/
-├── Lokaltid.xcodeproj/          # Xcode-prosjektfil
-├── Lokaltid/                     # Hovudkatalogen for appkoden
-│   ├── LokaltidApp.swift        # App entry point
+├── Soltid.xcodeproj/          # Xcode-prosjektfil
+├── Soltid/                     # Hovudkatalogen for appkoden
+│   ├── SoltidApp.swift        # App entry point
 │   ├── ContentView.swift        # Hovudvisning med urskive
 │   ├── Models/
 │   │   └── Location.swift       # Geografisk posisjon
@@ -112,7 +112,7 @@ solar_time = standard_time + offset_seconds
 ```
 
 ### Framtidig forbetring
-For meir presis soltid kan ein integrera [lokaltid Rust-biblioteket](https://github.com/snomos/lokaltid) som støttar:
+For meir presis soltid kan ein integrera [soltid Rust-biblioteket](https://github.com/snomos/soltid) som støttar:
 - Høgare presisjon (ned til boge-sekund)
 - "Equation of time" for ekstra nøyaktigheit
 - Automatisk genererte Swift bindings via UniFFI
@@ -126,12 +126,12 @@ For meir presis soltid kan ein integrera [lokaltid Rust-biblioteket](https://git
    ```
 3. Opna prosjektet i Xcode:
    ```bash
-   open Lokaltid.xcodeproj
+   open Soltid.xcodeproj
    ```
 
 ## Bygging og køyring
 
-1. Opna `Lokaltid.xcodeproj` i Xcode
+1. Opna `Soltid.xcodeproj` i Xcode
 2. Vel ein simulator eller fysisk einheit
 3. Trykk Cmd+R for å byggja og køyra appen
 4. Godta posisjonslgløyve når appen spør

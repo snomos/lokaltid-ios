@@ -11,7 +11,7 @@ Når du startar appen første gong, vil den be om tilgang til di posisjon. Du ka
 ### Urskiva
 Det sentrale elementet er ei analog urskive med **to sett visarar**:
 
-#### Kvite visarar (Soltid/Lokaltid)
+#### Kvite visarar (Soltid)
 - **Timevisar**: Kort, tjukk visar
 - **Minuttvisar**: Mellomlang visar
 - **Sekundvisar**: Lang, tynn visar
