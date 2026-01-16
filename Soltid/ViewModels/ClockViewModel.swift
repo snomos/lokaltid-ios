@@ -49,7 +49,15 @@ class ClockViewModel {
         // Berekn soltid
         let result = SolarTimeCalculator.calculateNow(for: location)
         solarTime = result.date
-        solarOffset = result.offsetFormatted
+        
+        // Berekn offset mellom soltid og lokal tid (ikkje UTC)
+        let offsetInSeconds = solarTime.timeIntervalSince(standardTime)
+        let totalSeconds = abs(Int(offsetInSeconds))
+        let hours = totalSeconds / 3600
+        let minutes = (totalSeconds % 3600) / 60
+        let seconds = totalSeconds % 60
+        let sign = offsetInSeconds >= 0 ? "+" : "-"
+        solarOffset = String(format: "%@%02d:%02d:%02d", sign, hours, minutes, seconds)
         
         // Formater posisjon
         locationText = String(format: "%.4f°, %.4f°", 
